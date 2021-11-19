@@ -9,9 +9,13 @@ class Unauthenticated extends SessionState {}
 class Authenticated extends SessionState {
 
   final dynamic user;
+  int index;
 
   Authenticated({
-    @required this.user
-  });
+    @required this.user,
+    this.index,
+  }) {
+    index = 0;
+  }
 
 }

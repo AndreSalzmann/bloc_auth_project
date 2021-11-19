@@ -32,4 +32,6 @@ class SessionCubit extends Cubit<SessionState> {
     authRepository.signOut();
     emit(Unauthenticated());
   }
+
+  void navigateTo(int index) => (state as Authenticated).index = index;
 }
