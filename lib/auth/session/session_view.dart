@@ -1,7 +1,9 @@
-import 'package:bloc_auth_project/session_cubit.dart';
-import 'package:bloc_auth_project/session_state.dart';
+import 'package:bloc_auth_project/auth/session/session_cubit.dart';
+import 'package:bloc_auth_project/auth/session/session_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../app_cubit.dart';
 
 class SessionView extends StatelessWidget {
   const SessionView({Key key}) : super(key: key);
@@ -10,7 +12,7 @@ class SessionView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SessionCubit, SessionState>(
+    return BlocBuilder<AppCubit, AppState>(
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
@@ -29,10 +31,10 @@ class SessionView extends StatelessWidget {
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Session started"),
+                  Text("Session started in HomeView"),
                   TextButton(
                       onPressed: () {
-                        BlocProvider.of<SessionCubit>(context).signOut();
+                        context.read<SessionCubit>().signOut();
                       },
                       child: Text('Sign out')
                   )
@@ -54,9 +56,9 @@ class SessionView extends StatelessWidget {
                 label: 'School',
               ),
             ],
-            currentIndex: (state as Authenticated).index,
+            currentIndex: state.index,
             selectedItemColor: Colors.amber[800],
-            onTap: context.read<SessionCubit>().navigateTo,
+            onTap: context.read<AppCubit>().navigateTo,
           ),
         );
       },

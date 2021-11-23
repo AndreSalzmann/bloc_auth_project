@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:bloc_auth_project/auth/auth_credentials.dart';
-import 'package:bloc_auth_project/session_cubit.dart';
+import 'package:bloc_auth_project/auth/session/session_cubit.dart';
 
 
 enum AuthState { login, signUp, confirmSignUp }

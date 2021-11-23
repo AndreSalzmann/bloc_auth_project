@@ -1,5 +1,5 @@
 import 'package:bloc_auth_project/auth/auth_cubit.dart';
-import 'package:bloc_auth_project/auth/confirmatioin/confirmation_view.dart';
+import 'package:bloc_auth_project/auth/confirmation/confirmation_view.dart';
 import 'package:bloc_auth_project/auth/sign_up/sign_up_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

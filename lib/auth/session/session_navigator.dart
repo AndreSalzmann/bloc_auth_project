@@ -1,12 +1,13 @@
+import 'package:bloc_auth_project/app_cubit.dart';
 import 'package:bloc_auth_project/app_navigator.dart';
-import 'package:bloc_auth_project/session_cubit.dart';
-import 'package:bloc_auth_project/session_state.dart';
+import 'package:bloc_auth_project/auth/session/session_cubit.dart';
+import 'package:bloc_auth_project/auth/session/session_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'auth/auth_cubit.dart';
-import 'auth/auth_navigator.dart';
-import 'loading_view.dart';
+import '../auth_cubit.dart';
+import '../auth_navigator.dart';
+import '../../loading_view.dart';
 
 class SessionNavigator extends StatelessWidget {
   const SessionNavigator({Key key}) : super(key: key);
@@ -36,7 +37,12 @@ class SessionNavigator extends StatelessWidget {
             // Show session flow
             if (state is Authenticated)
               MaterialPage(
-                child: AppNavigator(),
+                child: BlocProvider(
+                  create: (context) => AppCubit(
+                    sessionCubit: context.read<SessionCubit>(),
+                  ),
+                  child: AppNavigator()
+                ),
               )
 
           ],

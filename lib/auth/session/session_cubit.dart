@@ -1,6 +1,6 @@
 import 'package:bloc_auth_project/auth/auth_credentials.dart';
 import 'package:bloc_auth_project/auth/auth_repository.dart';
-import 'package:bloc_auth_project/session_state.dart';
+import 'package:bloc_auth_project/auth/session/session_state.dart';
 import 'package:bloc/bloc.dart';
 
 class SessionCubit extends Cubit<SessionState> {
@@ -32,6 +32,4 @@ class SessionCubit extends Cubit<SessionState> {
     authRepository.signOut();
     emit(Unauthenticated());
   }
-
-  void navigateTo(int index) => (state as Authenticated).index = index;
 }
