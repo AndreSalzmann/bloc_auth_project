@@ -1,15 +1,37 @@
 import 'package:flutter/cupertino.dart';
 
 class AuthCredentials {
-  final String username;
-  final String email;
-  final String password;
+  String username;
+  String email;
+  String password;
   String userId;
 
+
   AuthCredentials({
-    @required this.username,
+    this.username,
     this.email,
     this.password,
     this.userId,
   });
+
+  factory AuthCredentials.fromJson(Map<String, dynamic> json) =>
+    _$AuthCredentialsFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AuthCredentialsToJson(this);
 }
+
+AuthCredentials _$AuthCredentialsFromJson(Map<String, dynamic> json) {
+  return AuthCredentials()
+    ..userId = json['userId'] as String
+    ..username = json['username'] as String
+    ..email = json['email'] as String
+    ..password = json['password'] as String;
+}
+
+Map<String, dynamic> _$AuthCredentialsToJson(AuthCredentials instance) =>
+    <String, dynamic>{
+      'userId': instance.userId,
+      'username': instance.username,
+      'email': instance.email,
+      'password': instance.password,
+    };

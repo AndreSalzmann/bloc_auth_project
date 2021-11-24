@@ -1,5 +1,5 @@
-import 'package:bloc_auth_project/app_cubit.dart';
-import 'package:bloc_auth_project/app_navigator.dart';
+import 'package:bloc_auth_project/core/app_navigator/app_cubit.dart';
+import 'package:bloc_auth_project/core/app_navigator/app_navigator.dart';
 import 'package:bloc_auth_project/auth/session/session_cubit.dart';
 import 'package:bloc_auth_project/auth/session/session_state.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../auth_cubit.dart';
 import '../auth_navigator.dart';
-import '../../loading_view.dart';
+import '../../widget/loading_view.dart';
 
 class SessionNavigator extends StatelessWidget {
   const SessionNavigator({Key key}) : super(key: key);

@@ -1,14 +1,18 @@
 import 'package:bloc_auth_project/auth/session/session_cubit.dart';
-import 'package:bloc_auth_project/auth/session/session_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../app_cubit.dart';
+import '../core/app_navigator/app_cubit.dart';
 
-class SessionView extends StatelessWidget {
-  const SessionView({Key key}) : super(key: key);
+class AppScaffold extends StatelessWidget {
+  const AppScaffold({
+    Key key,
+    @required this.child,
+    this.title,
+  }) : super(key: key);
 
-
+  final Widget child;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +20,7 @@ class SessionView extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-            title: Text('Session'),
+            title: Text(title),
             actions: [
               InkWell(
                 child: Padding(
@@ -27,20 +31,7 @@ class SessionView extends StatelessWidget {
               ),
             ],
           ),
-          body: Center(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("Session started in HomeView"),
-                  TextButton(
-                      onPressed: () {
-                        context.read<SessionCubit>().signOut();
-                      },
-                      child: Text('Sign out')
-                  )
-                ]
-            ),
-          ),
+          body: child,
           bottomNavigationBar: BottomNavigationBar(
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(

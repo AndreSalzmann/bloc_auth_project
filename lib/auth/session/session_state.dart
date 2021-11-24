@@ -1,4 +1,6 @@
+import 'package:bloc_auth_project/auth/auth_credentials.dart';
 import 'package:flutter/material.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 abstract class SessionState {}
 
@@ -8,11 +10,11 @@ class Unauthenticated extends SessionState {}
 
 class Authenticated extends SessionState {
 
-  final dynamic user;
+  AuthCredentials credentials;
   int index;
 
   Authenticated({
-    @required this.user,
+    @required this.credentials,
     this.index,
   }) {
     index = 0;
