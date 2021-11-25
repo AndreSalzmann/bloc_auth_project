@@ -5,11 +5,13 @@ import 'package:meta/meta.dart';
 part 'app_state.dart';
 
 class AppCubit extends Cubit<AppState> {
-  AppCubit({this.sessionCubit}) : super(ShowHomeScreen());
+  AppCubit({this.sessionCubit}) : super(ShowPokedexScreen());
 
   final SessionCubit sessionCubit;
 
-  void showHomeScreen() => emit(ShowHomeScreen());
+  void showPokedexScreen() => emit(ShowPokedexScreen());
+  void showPokemonDetails(int id) => emit(ShowPokedexScreen(pokemonId: id));
+
   void showBusinessScreen() => emit(ShowBusinessScreen());
   void showSchoolScreen() => emit(ShowSchoolScreen());
 
@@ -17,7 +19,7 @@ class AppCubit extends Cubit<AppState> {
     print(index);
     switch(index) {
       case 0:
-        showHomeScreen();
+        showPokedexScreen();
         break;
       case 1:
         showBusinessScreen();
@@ -26,7 +28,7 @@ class AppCubit extends Cubit<AppState> {
         showSchoolScreen();
         break;
       default:
-        showHomeScreen();
+        showPokedexScreen();
         break;
     }
   }

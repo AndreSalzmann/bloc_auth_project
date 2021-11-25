@@ -6,8 +6,19 @@ abstract class AppState {
   AppState({this.index});
 }
 
-class ShowHomeScreen extends AppState {
-  ShowHomeScreen() : super(index: 0);
+class ShowPokedexScreen extends AppState {
+
+  int pokemonId;
+
+  ShowPokedexScreen({
+    this.pokemonId
+  }) : super(index: 0);
+
+  ShowPokedexScreen copyWith({
+    int pokemonId
+  }) {
+    pokemonId = pokemonId ?? this.pokemonId;
+  }
 }
 
 class ShowBusinessScreen extends AppState {
